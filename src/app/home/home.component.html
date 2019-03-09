@@ -1,0 +1,47 @@
+<mat-card class="my-homes-card">
+  <mat-card-header><h3>My Homes</h3></mat-card-header>
+  <mat-card-content>
+    <p>{{model.account}}</p>
+    <mat-list>
+      <mat-list-item mat-list-item *ngFor="let myHome of ownerHomes">
+        <img matListAvatar [src]="myHome[2]">
+        <h3 matLine> {{myHome[0]}} </h3>
+        <p matLine>
+          <span> {{myHome[1]}} ETH</span>
+        </p>
+      </mat-list-item>
+    </mat-list>
+  </mat-card-content>
+</mat-card>
+
+<mat-card>
+  <mat-card-header><h3>Home Creation</h3></mat-card-header>
+  <mat-card-content>
+    <mat-form-field>
+      <input type="text" matInput id="address" placeholder="Home Address" (change)="setAddress($event)">
+    </mat-form-field>
+    <mat-form-field>
+      <input type="text" matInput id="price" placeholder="Home Price" (change)="setPrice($event)">
+    </mat-form-field>
+    <mat-form-field>
+      <input type="text" matInput id="picture" placeholder="Home Picture" (change)="setPicture($event)">
+    </mat-form-field>
+    <button mat-button id="createHome" (click)="createHome()">Create Home</button>
+  </mat-card-content>
+</mat-card>
+
+<mat-card class="my-homes-card">
+  <mat-card-header><h3>Other homes</h3></mat-card-header>
+  <mat-card-content>
+    <mat-list>
+      <mat-list-item mat-list-item *ngFor="let home of homes; let i = index">
+        <img matListAvatar [src]="home[2]">
+        <h3 matLine> {{home[0]}} </h3>
+        <p matLine>
+          <span> {{home[1]}} ETH</span>
+        </p>
+        <button mat-button id="buyHome" (click)="buyHome(i)">Buy</button>
+      </mat-list-item>
+    </mat-list>
+  </mat-card-content>
+</mat-card>
